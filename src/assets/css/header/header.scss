@@ -1,0 +1,11 @@
+
+.toolbar-img {
+    // border: 8px solid rgb(174, 221, 142);
+    width: 4rem;
+    margin: auto 0.5rem;
+    border-radius: 0.4rem;
+    @media (max-width: 600px) {
+        width: 3rem;  
+        margin-left: 0;      
+    }
+}
