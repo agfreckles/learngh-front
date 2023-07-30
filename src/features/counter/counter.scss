@@ -1,0 +1,54 @@
+.section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  .color-page-wrapper {
+    width: 40%;
+    border: 2px dotted green;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    .color-box {
+        width: 5em;
+        height: 3em;
+        // margin: 1px;
+        border: 1px solid white;
+        border-radius: 3px;
+    }
+
+  }
+
+  .counter-page-wrapper {
+    width: 40%;
+    min-height: 14em;
+    border: 2px solid white;
+    // margin: 6% auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    .counting {
+      // border: 2px solid red;
+      width: 90%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin: 2em auto;
+      cursor: pointer;
+    }
+    .number {
+      color: greenyellow;
+      font-size: larger;
+      font-weight: bolder;
+    }
+    .reset-group {
+      width: 90%;
+      display: flex;
+      justify-content: space-around;
+      //    border: 2px dotted red;
+    }
+  }
+}

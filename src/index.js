@@ -6,7 +6,9 @@ import { RouterProvider } from "react-router-dom";
 import App from "./App";
 import router from "./router";
 import reportWebVitals from "./reportWebVitals";
-// import "./index.scss";
+import { fetchUsers } from "./features/users/usersSlice";
+
+store.dispatch(fetchUsers());
 
 const container = document.getElementById("root");
 const root = createRoot(container);

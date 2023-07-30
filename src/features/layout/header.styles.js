@@ -9,3 +9,7 @@ export const heading_sx =
         color: "#C3DAE1",
         textDecoration: "none",
       }
+
+export const nav_link = {
+  color: '#fff'
+}

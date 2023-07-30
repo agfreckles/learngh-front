@@ -1,0 +1,21 @@
+.lbluelink a {
+    color: #76d0ff;
+    text-decoration: none;
+    border-bottom: 1px dotted #76d0ff;
+  }
+  
+  .lbluelink a:hover {
+    border-bottom: none;
+  }
+  .linkgreen {
+    color: #fff;
+    padding: 4px 10px 7px 10px;
+    font-size: 12px;
+    background: #5f6a31;
+  }
+  
+  .linkgreen:hover {
+    text-decoration: underline;
+    background: #71812c;
+    color: #2b2942;
+  }

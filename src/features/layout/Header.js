@@ -14,7 +14,8 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import logo from "../../assets/images/logo.gif";
 import "../../assets/css/header/header.scss";
-import { heading_sx } from "./header.styles";
+import { heading_sx, nav_link } from "./header.styles";
+import { NavLink } from "react-router-dom";
 
 // const pages = ["Learn", "Questions", "Blog"];
 const pages = [{ url: "/learn", name: "Learn" }];
@@ -97,14 +98,14 @@ const Header = () => {
               ))}
             </Menu>
           </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }} id="nav">
             {pages.map((page) => (
               <Button
                 key={page.name}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page.name}
+                <NavLink to="learn">{page.name}</NavLink>
               </Button>
             ))}
           </Box>
