@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux";
+import React from "react";
 import { reactionAdded } from "./postsSlice";
 import "./posts.scss";
 const reactionEmoji = {

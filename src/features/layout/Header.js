@@ -18,7 +18,7 @@ import { heading_sx, nav_link } from "./header.styles";
 import { NavLink } from "react-router-dom";
 
 // const pages = ["Learn", "Questions", "Blog"];
-const pages = [{ url: "/learn", name: "Learn" }];
+const pages = [{ url: "/learn", name: "L e a r n" }];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const Header = () => {
