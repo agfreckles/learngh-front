@@ -3,8 +3,11 @@ import TimeAgo from "../../utils/TimeAgo";
 import ReactionButtons from "./ReactionButtons";
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectPostById } from "./postsSlice";
 
-const PostsExcept = ({ post }) => {
+const PostsExcept = ({ postId }) => { 
+  const post = useSelector(state => selectPostById(state, postId))
   return (
     <article className="post-article blogpost">
       <h3>{post.title}</h3>

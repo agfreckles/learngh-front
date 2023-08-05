@@ -535,3 +535,29 @@ h4 span {
   background: #71812c;
   color: #2b2942;
 }
+
+.sub-page-wrapper {
+  width: 95%;
+  margin: 0 auto;
+  // border: 2px solid green;
+
+  display: flex;
+  flex-direction: row;
+  align-content: space-around;
+  align-items: center;
+
+  section {
+    margin: 0 auto;
+  }
+}
+
+
+// ICONS
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}

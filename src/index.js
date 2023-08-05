@@ -7,8 +7,12 @@ import App from "./App";
 import router from "./router";
 import reportWebVitals from "./reportWebVitals";
 import { fetchUsers } from "./features/users/usersSlice";
+import { fetchPosts } from "./features/posts/postsSlice";
+import { ApiProvider } from "@reduxjs/toolkit/dist/query/react";
+import { apiSlice } from "./api/apiSlice";
 
 store.dispatch(fetchUsers());
+store.dispatch(fetchPosts());
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -17,8 +21,10 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <RouterProvider router={router}>
-        {" "}
-        <App />
+        <ApiProvider api={apiSlice}>
+          {" "}
+          <App />
+        </ApiProvider>
       </RouterProvider>
     </Provider>
   </React.StrictMode>

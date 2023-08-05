@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import "./posts.scss";
 import { addNewPost } from "./postsSlice";
 import { selectAllUsers } from "../users/usersSlice";
+import { Link, useNavigate } from "react-router-dom";
 // import { nanoid } from "@reduxjs/toolkit";
 
 const AddPostForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [userId, setUserId] = useState("");
@@ -16,7 +18,7 @@ const AddPostForm = () => {
 
   const onTitleChange = (e) => setTitle(e.target.value);
   const onContentChange = (e) => setContent(e.target.value);
-  const onAuthorChange = (e) => setUserId(e.target.value);
+  const onAuthorChange = (e) => setUserId(Number(e.target.value));
 
   const canSave =
     [title, content, userId].every(Boolean) && addRequestStatus === "idle"; //Boolean(title) && Boolean(content) && Boolean(userId);
@@ -28,16 +30,13 @@ const AddPostForm = () => {
         setTitle("");
         setContent("");
         setUserId("");
+        navigate("/posts"); 
       } catch (err) {
         console.error("Failed to save post", err);
       } finally {
         setAddRequestStatus("idle");
       }
     }
-    // if (title && content) {
-    //   dispatch(addNewPost(title, content, userId));
-
-    // }
   };
   const usersOptions = users.map((user) => (
     <option key={user.id} value={user.id}>
@@ -46,7 +45,10 @@ const AddPostForm = () => {
   ));
   return (
     <section className="post-add-form">
-      <h2>Add Post</h2>
+      <Link to='/posts' className="lblue">
+       <h2>Back</h2>
+        </Link>
+      {/* <h2>Add Post</h2> */}
       <form id="contact-form">
         {/* <label htmlFor="postTitle">Post Title:</label> */}
         <input

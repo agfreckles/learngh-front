@@ -15,13 +15,19 @@ import AdbIcon from "@mui/icons-material/Adb";
 import logo from "../../assets/images/logo.gif";
 import "../../assets/css/header/header.scss";
 import { heading_sx, nav_link } from "./header.styles";
-import { NavLink } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // const pages = ["Learn", "Questions", "Blog"];
-const pages = [{ url: "/learn", name: "L e a r n" }];
+const pages = [
+  { url: "/learn", name: "L e a r n" },
+  { url: "/posts", name: "Posts" },
+  { url: "/users", name: "Users" },
+  { url: "/todos", name: "ToDOs" },
+];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const Header = () => {
+  const navigate = useNavigate()
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   // (React.useState < null) | (HTMLElement > null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -91,21 +97,24 @@ const Header = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page.name} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center" color="inherit">
+                  <Typography textAlign="center" color="inherit" onClick={() => navigate(page.url)}>
                     {page.name}
                   </Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }} id="nav">
+          <Box
+            sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
+            id="nav"
+          >
             {pages.map((page) => (
               <Button
                 key={page.name}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                <NavLink to="learn">{page.name}</NavLink>
+                <Link to={page.url}>{page.name}</Link>
               </Button>
             ))}
           </Box>

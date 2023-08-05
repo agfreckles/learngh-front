@@ -1,49 +1,55 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  selectAllPosts,
-  getPostsError,
-  getPostsStatus,
-  fetchPosts,
+  selectIds, getPostsStatus, getPostsError,
+  // selectAllPosts,
+  // getPostsError,
+  // getPostsStatus,
+  // increaseCount,
+  getCount,
+  selectPostsById,
+  // selectPostById,
+  // fetchPosts,
 } from "./postsSlice";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import "./posts.scss";
 import AddPostForm from "./AddPostForm";
 import PostsExcept from "./PostsExcept";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const PostsList = () => {
-  const dispatch = useDispatch();
-
-  const posts = useSelector(selectAllPosts);
+  // const posts = useSelector(selectAllPosts);
+  // const orderedPostIds = useSelector(selectPostById);
   const postsStatus = useSelector(getPostsStatus);
+  // const error = useSelector(getPostsError);
+  const dispatch = useDispatch();
+  const count = useSelector(getCount);
+
+  const orderedPostIds = useSelector(selectPostsById)
+  const postStatus = useSelector(getPostsStatus);
   const error = useSelector(getPostsError);
-
-  useEffect(() => {
-    if ((postsStatus === "idle")) {
-      dispatch(fetchPosts());
-    }
-  }, [postsStatus, dispatch]);
-
   let content;
   if (postsStatus === "pending") {
     content = <p>'Loading . . .'</p>;
   } else if (postsStatus === "succeeded") {
-    const orderedPosts = posts
-      .slice()
-      .sort((a, b) => b.date.localeCompare(a.date));
-    content = orderedPosts.map((post,i) => {
-      // console.log(post.id)
-      return <PostsExcept key={post.id} post={post} />
-  });
+    content = orderedPostIds.map(postId => <PostsExcept key={postId} postId={postId} />);
   } else if (postsStatus === "failed") {
     content = <p>{error}</p>;
   }
-
   return (
     <section className="posts-page-wrapper">
       <div className="posts">
-      <AddPostForm />
-        <h2>POSTS</h2>
+        <Link to={"/post"}>
+          <h3>+ New</h3>
+        </Link>
+        {/* <span
+          className="right white "
+          onClick={() => dispatch(increaseCount())}
+        >
+          {count}
+        </span> */}
         {content}
       </div>
     </section>

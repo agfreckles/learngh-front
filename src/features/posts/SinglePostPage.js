@@ -11,21 +11,23 @@ const SinglePostPage = () => {
   if (!post) {
     return (
       <section>
-        <h2>Post Not found</h2>
+        <h2>Loaind . . . </h2>
       </section>
     );
   }
   return (
     <article className="post-article blogpost">
-      <Link to={-1} className="lblue">
-        Back
+      <Link to="/posts" className="lblue">
+        <span className="material-symbols-outlined">arrow_back_ios</span>
       </Link>
       <h3>{post.title}</h3>
       <p>{post.body}</p>
       <PostAuthor userId={post.userId} />
       <TimeAgo timestamp={post.date} />
       <ReactionButtons post={post} />
-      <Link  to={`/post/edit/${post.id}`} className="lblue right">Edit post</Link>
+      <Link to={`/post/edit/${post.id}`} className="white">
+        <span className="material-symbols-outlined">edit</span>
+      </Link>
     </article>
   );
 };
